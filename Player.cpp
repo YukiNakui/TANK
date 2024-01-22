@@ -17,12 +17,15 @@ enum CAM_TYPE
 };
 
 Player::Player(GameObject* parent)
-	:GameObject(parent, "Player"), hTankBody_(-1), front_({ 0,0,1,0 }), speed_(0.05),camState_(CAM_TYPE::FIXED_TYPE)
+	:GameObject(parent, "Player"), hTankBody_(-1),cp({0,0,0}),hitRate(0),
+	front_({ 0,0,1,0 }), speed_(0.05),camState_(CAM_TYPE::FIXED_TYPE),pText(nullptr)
 {
 }
 
 void Player::Initialize()
 {
+	pText = new Text;
+	pText->Initialize();
 	hTankBody_ = Model::Load("Model\\TankBody.fbx");
 	assert(hTankBody_ >= 0);
 	transform_.position_ = { 0,0,0 };
@@ -112,23 +115,28 @@ void Player::Update()
 	}
 	case CAM_TYPE::FPS_TYPE:
 	{
-		/*Camera::SetPosition(transform_.position_);
+		Camera::SetPosition(transform_.position_);
 		XMFLOAT3 camTarget;
 
-		XMVECTOR vMove = XMLoadFloat3(&());
-		XMStoreFloat3(&camTarget, pos + dir * move);
-		Camera::SetTarget(camTarget);*/
+		//XMVECTOR vMove = XMLoadFloat3(&());
+		XMStoreFloat3(&camTarget, pos + move);
+		Camera::SetTarget(camTarget);
 		break;
 	}
 	default:
 		break;
 	}
+	cp = transform_.position_;
 }
 
 void Player::Draw()
 {
 	Model::SetTransform(hTankBody_, transform_);
 	Model::Draw(hTankBody_);
+	pText->Draw(30, 30, "CurrentPosition:x    y    z");
+	pText->Draw(310, 30, cp.x);
+	pText->Draw(390, 30, cp.y);
+	pText->Draw(470, 30, cp.z);
 }
 
 void Player::Release()

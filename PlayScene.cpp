@@ -22,11 +22,13 @@ PlayScene::PlayScene(GameObject* parent)
 void PlayScene::Initialize()
 {
 	Instantiate<Ground>(this);
-	player = Instantiate<Player>(this);
+	
 	enemyNum = ENEMY_NUM;
 	for (int i = 0; i < enemyNum; i++)
 		Enemy* p = Instantiate<Enemy>(this);
 	//Instantiate<TankHead>(this);
+
+	player = Instantiate<Player>(this);
 
 	pText = new Text;
 	pText -> Initialize();
@@ -44,10 +46,9 @@ void PlayScene::Update()
 
 void PlayScene::Draw()
 {
-	pText->Draw(30, 30, "Enemy : ");
+	//pText->Draw(30, 30, "SCORE : ");
 }
 
 void PlayScene::Release()
 {
-	pText->Release();
 }

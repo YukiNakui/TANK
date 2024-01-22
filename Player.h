@@ -1,10 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include"Engine/Text.h"
 
 //プレイシーン管理するクラス
 class Player :
 	public GameObject
 {
+	Text* pText;
+	XMFLOAT3 cp;
+	float hitRate;
 	int hTankBody_;
 	XMVECTOR front_;//前ベクトル z+方向　大きさ1
 	float speed_;   //0.05 0.05*60 m/s

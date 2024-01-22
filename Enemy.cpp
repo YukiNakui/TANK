@@ -1,10 +1,11 @@
 #include "Enemy.h"
 #include"Engine/Model.h"
 #include"Engine/SphereCollider.h"
+#include"Engine/Image.h"
 #include"Ground.h"
 
 Enemy::Enemy(GameObject* parent)
-	:GameObject(parent,"Enemy"),hModel_(-1)
+	:GameObject(parent,"Enemy"),hModel_(-1),hPict_(-1)
 {
 }
 
@@ -14,6 +15,8 @@ Enemy::~Enemy()
 
 void Enemy::Initialize()
 {
+	hPict_ = Image::Load("number.png");
+	assert(hPict_ >= 0);
 	hModel_ = Model::Load("Model\\MyEnemy_anime.fbx");
 	assert(hModel_ >= 0);
 	//transform_.position_ = { 5,0,15 };
@@ -50,13 +53,15 @@ void Enemy::Initialize()
 
 void Enemy::Update()
 {
-	
 }
 
 void Enemy::Draw()
 {
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
+	//Image::SetRect(hPict_, 0, 0, 204, 256);
+	//Image::SetTransform(hPict_, transform_);
+	//Image::Draw(hPict_);
 }
 
 void Enemy::Release()

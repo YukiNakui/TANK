@@ -1,9 +1,11 @@
 #pragma once
 #include "Engine/GameObject.h"
+
 class Enemy :
     public GameObject
 {
 private:
+	int hPict_;
 	int hModel_; //Enemyのモデルを読む変数
 	//モデル自体はグローバル領域に保存されている
 public:
