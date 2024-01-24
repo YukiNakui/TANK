@@ -28,7 +28,7 @@ void Player::Initialize()
 	pText->Initialize();
 	hTankBody_ = Model::Load("Model\\TankBody.fbx");
 	assert(hTankBody_ >= 0);
-	transform_.position_ = { 0,0,0 };
+	//transform_.position_ = { 0,0,0 };
 	Instantiate<TankHead>(this);
 }
 
@@ -75,7 +75,7 @@ void Player::Update()
 
 	if (data.hit == true)
 	{
-		transform_.position_.y = -data.dist;
+		transform_.position_.y = -data.dist + 0.5f;
 	}
 
 	if (Input::IsKeyDown(DIK_Z))
@@ -97,7 +97,7 @@ void Player::Update()
 	case CAM_TYPE::TPS_NOROT_TYPE:
 	{
 		XMFLOAT3 camPos = transform_.position_;
-		camPos.y = transform_.position_.y + 20.0f;
+		camPos.y = transform_.position_.y + 15.0f;
 		camPos.z = transform_.position_.z - 10.0f;
 		Camera::SetPosition(camPos);
 		Camera::SetTarget(transform_.position_);
@@ -133,10 +133,10 @@ void Player::Draw()
 {
 	Model::SetTransform(hTankBody_, transform_);
 	Model::Draw(hTankBody_);
-	pText->Draw(30, 30, "CurrentPosition:x    y    z");
-	pText->Draw(310, 30, cp.x);
-	pText->Draw(390, 30, cp.y);
-	pText->Draw(470, 30, cp.z);
+	pText->Draw(30, 120, "XYZ:   /   /");
+	pText->Draw(100, 120, cp.x);
+	pText->Draw(170, 120, cp.y);
+	pText->Draw(240, 120, cp.z);
 }
 
 void Player::Release()

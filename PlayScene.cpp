@@ -3,6 +3,7 @@
 //#include"TankHead.h"
 #include"Enemy.h"
 #include"Ground.h"
+#include"HUD.h"
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Engine/SceneManager.h"
@@ -32,6 +33,8 @@ void PlayScene::Initialize()
 
 	pText = new Text;
 	pText -> Initialize();
+
+	Instantiate<HUD>(this);
 }
 
 void PlayScene::Update()
@@ -42,6 +45,11 @@ void PlayScene::Update()
 	camPos.y += 8;
 	camPos.z -= 15;
 	Camera::SetPosition(camPos);*/
+	if (!IsEnemyLeft())
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+	}
 }
 
 void PlayScene::Draw()

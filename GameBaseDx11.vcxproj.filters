@@ -30,6 +30,9 @@
     <Filter Include="PLAY\TITLE">
       <UniqueIdentifier>{4c94b27a-4467-41f0-a83b-5313765b6665}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PLAY\CLEAR">
+      <UniqueIdentifier>{513a1e94-1c72-4c90-ad12-0d78eb6ec0f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -122,6 +125,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>PLAY</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>PLAY</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearScene.cpp">
+      <Filter>PLAY\CLEAR</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -213,6 +222,12 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>PLAY</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>PLAY</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearScene.h">
+      <Filter>PLAY\CLEAR</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

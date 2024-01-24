@@ -29,5 +29,10 @@ public:
 
 	//開放
 	void Release() override;
+
+	//インライン定義
+	void DescEnemy() { enemyNum--; }
+	bool IsEnemyLeft() { return enemyNum > 0; }
+	int GetEnemyNum() { return enemyNum; }
 };
 

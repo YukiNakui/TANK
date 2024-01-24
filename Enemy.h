@@ -5,7 +5,6 @@ class Enemy :
     public GameObject
 {
 private:
-	int hPict_;
 	int hModel_; //Enemyのモデルを読む変数
 	//モデル自体はグローバル領域に保存されている
 public:
@@ -31,6 +30,6 @@ public:
 
 	//何かと衝突した場合に呼ばれる
    //引数：pTarget	衝突した相手
-	void OnCollision(GameObject* pTarget);
+	//void OnCollision(GameObject* pTarget);
 };
 
